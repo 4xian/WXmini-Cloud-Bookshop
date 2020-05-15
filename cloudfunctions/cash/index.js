@@ -1,10 +1,10 @@
 var config = {
-      appid: 'wx2cc7e47c681d1101', //小程序Appid
-      envName: 'shixian-jx2100', // 小程序云开发环境ID
-      mchid: '1587479591', //商户号
-      partnerKey: 'jianzhimin1735400430018755294439', //此处填服务商密钥
+      appid: 'wx2xxxxxxxxxxxxxx', //小程序Appid
+      envName: 'shixian0', // 小程序云开发环境ID
+      mchid: '158xxxxxx', //商户号
+      partnerKey: 'xxxxxxxxxxxxxxxxxx', //此处填服务商密钥32位
       pfx: '', //证书初始化
-      fileID: 'cloud://shixian-jx2100.7368-shixian-jx2100-1301578378/apiclient_cert.p12', //证书云存储id
+      fileID: 'cloud://shixianxxxxxxxxxxxxx/apiclient_cert.p12', //证书云存储id
       actionName: '安农大闲置书籍小程序提现',
       rate: 1 //提现收取利率，1指的是每笔收取1%
 };
