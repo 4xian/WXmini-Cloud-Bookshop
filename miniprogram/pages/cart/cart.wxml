@@ -1,0 +1,102 @@
+<!--miniprogram/pages/cart/cart.wxml-->
+<view class="myPage" bindtap="closeBuy" wx:if="{{showBuy}}"> </view>
+
+<view class="empty" hidden="{{iscart}}">
+	<view class="empty-cart">
+		<text >购物车空空如也~</text>
+	</view>
+</view>
+
+<!--列表显示-->
+<view hidden="{{!iscart}}">
+
+	<block wx:for="{{cart}}" wx:key="_id">
+		<view class="list_box">
+			<image lazy-load class="list_poster" src="{{item.bookinfo.pic}}"></image>
+			<view class="list_content" bindtap="detail" data-id="{{item._id}}">
+				<view class="list_word">
+					<view class="list_title text-cut">{{item.bookinfo.title}}
+					</view>
+					<view class="list_author text-cut">{{item.bookinfo.author}}
+					</view>
+				</view>
+
+				<view class="list_price">￥{{item.sellPrice}}元</view>
+				<!-- <view class="list_between">
+                                    <view class="list_time" >{{otherjs.formTime(item.creatTime)}}发布</view>  
+                              </view> -->
+			</view>
+			<!-- <view class="select">
+				<radio color="#6699CC" bindtap="selectList" data-index="{{index}}"/>
+			</view> -->
+			<view >
+				<icon wx:if="{{item.selected}}" type="success" color="#6699CC" data-index="{{index}}" class="cart-pro-select" bindtap="selectList" />
+				<icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" bindtap="selectList" />
+			</view>
+            <view class="list-other">
+            <image bindtap="deleteList" data-index="{{index}}" src="../../images/del.png"></image>
+            </view>
+		</view>
+	</block>
+
+</view>
+
+<view class="bottom" hidden="{{!iscart}}">
+	<view class="allPrice">￥ {{totalPrice}} 元</view>
+	<view class="buy_box">
+		<view class="buy shadow" bindtap="confimBuy">下单</view>
+	</view>
+	<text style="font-size:30rpx">全选</text>
+	<icon wx:if="{{selectAllStatus}}" type="success" color="#6699CC" bindtap="selectAll" />
+	<icon wx:else type="circle" bindtap="selectAll" />
+</view>
+
+
+<!-- 购买确认弹窗 -->
+<view wx:if="{{showBuy}}" class="showBuy">
+
+<!-- 来自同校时 -->
+<view class="showBuy-tip">
+<block wx:if="{{sameCampus}}">
+<text> 检测到您与卖家来自同校,建议校内面交,可在下方留下wx,下单后会立即短信通知卖家与您联系具体面交地址\n\n</text>
+</block>
+<block wx:if="{{!sameCampus}}">
+<text> 检测到您与卖家异校,建议使用快递,请在下方填写信息，下单后会立即短信通知卖家\n\n</text>
+</block>
+</view>
+
+                  <view class="b_bar">
+				<!-- <view class="b_name">取货方式</view> -->
+				<radio-group class="kind-group" bindchange="delChange">
+					<label class="b_radio" wx:for="{{delivery}}" wx:key="id">
+						<radio color="#6699CC" value="{{item.id}}" checked="{{item.check}}" />{{item.name}}
+					</label>
+				</radio-group>
+			</view>
+			<block wx:if="{{chooseDelivery==1}}">
+				<view class="b_place">
+					<view class="b_placebox">                          
+						<input placeholder="输入姓名" bindinput="buyName"></input>    
+					</view>
+					<view class="b_placebox">
+						<input type="number" placeholder="输入手机号" bindinput="buyPhone"></input>    
+					</view>
+					<view class="b_placebox">
+						<input maxlength="30" placeholder="输入详细地址" value="{{place}}" bindinput="buyPlace" />
+					</view>
+					<view class="b_placebox">
+						<input maxlength="30" placeholder="输入备注信息（选填）" value="{{place}}" bindinput="buyOther" />
+					</view>
+				</view>
+			</block>
+             
+      <view class="showBuy-wx" wx:if="{{chooseDelivery==0}}">
+
+      <!-- <text>联系wx: </text>  -->
+      <input class="b_placebox" type="text" bindinput="wxInput" placeholder="请留下联系wx"></input>\n
+      </view>
+
+<view class="showBuy-button">
+            <view class="buy shadow" bindtap="getStatus">确认下单</view>
+      </view>
+</view>

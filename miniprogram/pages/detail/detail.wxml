@@ -1,0 +1,205 @@
+<wxs src="../../time.wxs" module="otherjs" />
+<view class="myPage" bindtap="closeBuy" wx:if="{{showBuy}}"> </view>
+<view class="myPage" bindtap="closeRentBuy" wx:if="{{showRentBuy}}"> </view>
+<view class="top_contain">
+      <view class="top_img">
+            <image lazy-load src="{{publishinfo.bookinfo.pic}}"></image>
+      </view>
+      <view class="title text-cut">{{publishinfo.bookinfo.title}}【第{{publishinfo.bookinfo.edition}}】</view>
+      <view class="author  text-cut">作者：{{publishinfo.bookinfo.author}}</view>
+      <view class="price_box">
+      <block wx:if="{{publishinfo.chooseId ==0}}">
+            <view class="now_price">￥{{publishinfo.sellPrice}}元</view>
+            <view class="pre_price">原价：￥{{publishinfo.bookinfo.price}}</view>
+      </block>
+      <block wx:if="{{publishinfo.chooseId ==1}}">
+            <view class="now_price">￥{{publishinfo.rentPrice}}元/天</view>
+            <view class="rent_price">保证金：￥{{publishinfo.bookinfo.price}}</view>
+      </block>
+            
+            
+      </view>
+</view>
+<view class="blank"></view>
+<view class="center_contain">
+      <view bindtap="changeTitle" data-id="{{ true }}" class="c_title {{first_title?'title_on':''}}">发布信息</view>
+      <view bindtap="changeTitle" data-id="{{ false }}" class="c_title {{first_title?'':'title_on'}}">图书详情</view>
+</view>
+<!--发布信息-->
+<view hidden="{{!first_title}}">
+      <view class="user_box">
+            <image lazy-load src="{{selluserinfo.info.avatarUrl}}"></image>
+            <view class="des_box">
+                  <view class="user_name">{{selluserinfo.info.nickName}}</view>
+                  <view class="local_box">
+                        <image src="/images/local.png"></image>
+                        <view>{{selluserinfo.campus.name}}</view>
+                  </view>
+            </view>
+            <view class="sex">
+                  <image lazy-load src="{{selluserinfo.info.gender==0?'/images/none.png':(selluserinfo.info.gender==1?'/images/boy.png':'/images/girl.png')}}"></image>
+            </view>
+      </view>
+      <view class="time_box">
+            <view class="kind">书籍类别：{{collegeName.name}}</view>
+            <view class="time">发布于{{otherjs.formTime(publishinfo.creatTime)}}</view>
+      </view>
+      <view class="deliver_box">
+            <view class="deliver_first">
+                  <view class="deliver_title">交易方式：</view>
+                  <view class="deliver_kind">{{publishinfo.chooseId==0 ? '出售':'出租'}}</view>
+                  
+            </view>
+            <br/>
+            <view class="deliver_place">{{publishinfo.place}}</view>
+      </view>
+      <!-- <view class="palceInput_box" wx:if="{{publishinfo.deliveryid==0}}">
+            <input bindinput="placeInput" placeholder="卖家可以校内面交，请留下您的联系方式"></input>
+      </view> -->
+      <view class="notes_box" wx:if="{{publishinfo.notes!==''}}">
+            <view class="notes">
+                  <view class="deliver_title">书籍完好情况等信息:</view>
+                  <view class="notes_text">{{publishinfo.notes}}</view>
+            </view>
+      </view>
+</view>
+<!--图书详情-->
+<view hidden="{{first_title}}">
+      <view class="detail_contain">
+            <view class="detail_card detail_border ">
+                  <view class="detail_title">isbn编号</view>
+                  <view class="detail_content">{{bookinfo.isbn}}</view>
+            </view>
+            <view class="detail_card detail_border ">
+                  <view class="detail_title">出版社</view>
+                  <view class="detail_content">{{bookinfo.publisher}}</view>
+            </view>
+            <view class="detail_card detail_border ">
+                  <view class="detail_title">出版地</view>
+                  <view class="detail_content">{{bookinfo.pubplace}}</view>
+            </view>
+            <view class="detail_card detail_border ">
+                  <view class="detail_title">出版时间</view>
+                  <view class="detail_content">{{bookinfo.pubdate}}</view>
+            </view>
+            <!-- <view class="detail_card detail_border ">
+                  <view class="detail_title">装帧方式</view>
+                  <view class="detail_content">{{bookinfo.binding}}</view>
+            </view>
+            <view class="detail_card detail_border ">
+                  <view class="detail_title">开本</view>
+                  <view class="detail_content">{{bookinfo.format}}</view>
+            </view>
+            <view class="detail_card detail_border ">
+                  <view class="detail_title">中图法分类</view>
+                  <view class="detail_content">{{bookinfo.class}}</view>
+            </view> -->
+            <view class="detail_card">
+                  <view class="detail_title">简介</view>
+                  <view class="detail_content">{{bookinfo.summary}}</view>
+            </view>
+      </view>
+</view>
+<view style="height: 96rpx;"></view>
+<!--底部导航-->
+<view class="tabbar">
+      <!-- <view class="t_card" >
+            <image src="/images/home.png"></image>
+            <text>首页</text>
+            <button class="t_button" bindtap="home" style="width:70px"></button>
+      </view> -->
+      <!--
+      <view class="t_card">
+            <image src="/images/contact.png"></image>
+            <text>反馈</text>
+            <button class="t_button" bindtap="go" data-go="/pages/kefu/kefu"></button>
+      </view>
+      -->
+       <view class="t_card" style="width:50px">
+            <image src="/images/share.png"></image>
+            <text>分享</text>
+            <button class="t_button" open-type="share" style="width:50px"></button>
+      </view>
+      
+      <view class="t_card" bindtap="addCart" style="width:50px">
+            <image src="/images/addCart.png"></image>
+            <text>加购物车</text>
+      </view>
+      <view class="buy_box">
+      <!-- 下单租借 -->
+      <block wx:if="{{publishinfo.chooseId ==1}}">
+            <view class="rentBuy shadow" bindtap="rentBuy">下单租借</view>
+      </block>
+      <!-- 下单购买 -->
+      <block wx:if="{{publishinfo.chooseId ==0}}">
+      
+            <view class="buy shadow" bindtap="buy">{{publishinfo.status==0?'立即购买':'刚刚被抢光了'}}</view>
+      </block>
+      </view>
+</view>
+
+<!-- 购买确认弹窗 -->
+<view wx:if="{{showBuy}}" class="showBuy">
+
+<!-- 来自同校时 -->
+<view class="showBuy-tip">
+<block wx:if="{{sameCampus}}">
+<text> 检测到您与卖家来自同校,建议校内面交,可在下方留下wx,下单后会立即短信通知卖家与您联系具体面交地址\n\n</text>
+</block>
+<block wx:if="{{!sameCampus}}">
+<text> 检测到您与卖家异校,建议使用快递,请在下方填写信息，下单后会立即短信通知卖家\n\n</text>
+</block>
+</view>
+
+                  <view class="b_bar">
+				<!-- <view class="b_name">取货方式</view> -->
+				<radio-group class="kind-group" bindchange="delChange">
+					<label class="b_radio" wx:for="{{delivery}}" wx:key="id">
+						<radio color="#6699CC" value="{{item.id}}" checked="{{item.check}}" />{{item.name}}
+					</label>
+				</radio-group>
+			</view>
+			<block wx:if="{{chooseDelivery==1}}">
+				<view class="b_place">
+					<view class="b_placebox">                          
+						<input placeholder="输入姓名" bindinput="buyName"></input>    
+					</view>
+					<view class="b_placebox">
+						<input type="number" placeholder="输入手机号" bindinput="buyPhone"></input>    
+					</view>
+					<view class="b_placebox">
+						<input maxlength="30" placeholder="输入详细地址" value="{{place}}" bindinput="buyPlace" />
+					</view>
+					<view class="b_placebox">
+						<input maxlength="30" placeholder="输入备注信息（选填）" value="{{place}}" bindinput="buyOther" />
+					</view>
+				</view>
+			</block>
+             
+      <view class="showBuy-wx" wx:if="{{chooseDelivery==0}}">
+
+      <!-- <text>联系wx: </text>  -->
+      <input class="b_placebox" type="text" bindinput="wxInput" placeholder="请留下联系wx"></input>\n
+      </view>
+
+<view class="showBuy-button">
+            <view class="buy shadow" bindtap="getStatus">确认下单</view>
+      </view>
+</view>
+
+<!-- 出租弹窗 -->
+<view wx:if="{{showRentBuy}}" class="showBuy">
+<view class="showBuy-tip">
+<!-- <text>联系wx: </text>  -->
+<text> 在下方留下微信,下单后会立即短信通知卖家与您联系具体面交地址\n\n\n\n\n\n</text>
+      <input class="b_placebox" type="text" bindinput="wxInput" placeholder="请留下联系wx"></input>\n
+</view>
+<view class="showBuy-button">
+            <view class="buy shadow" bindtap="getStatus">确认下单</view>
+      </view>
+</view>
+<!--悬浮客服功能-->
+<!-- <view class="contact_box" bindtap="go" data-go="/pages/kefu/kefu" animation="{{animationKefuData}}">
+     <image src="/images/ww.jpg" ></image>
+     <view >反馈</view>
+</view> -->

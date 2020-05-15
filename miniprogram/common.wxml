@@ -1,0 +1,6 @@
+<template name="loadmore">
+      <view class="loadmore">
+            <image hidden="{{nomore}}" src="/images/more.gif"></image>
+            <view  hidden="{{!nomore}}" style="color:grey;text-align:center"><text >已加载到底</text> </view>
+      </view>
+</template>

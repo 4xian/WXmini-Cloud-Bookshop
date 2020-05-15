@@ -1,0 +1,42 @@
+<!--miniprogram/pages/success/success.wxml-->
+<view class="contain">
+        <image class="successimg" src="/images/suc.png"></image>
+        <view class="successtext">订单支付成功</view>
+        <view class="card"  style="margin-top:30rpx">
+                  <view class="card_title">购买书名：</view>
+                  <view class="card_des">{{detail.bookinfo.title}}</view>
+        </view>
+        <view class="card">
+                  <view class="card_title">实付金额：</view>           
+                  <view class="card_des price" >{{detail.price}}元</view>
+        </view>
+        <view class="card">
+                  <view class="card_title">创建时间：</view>
+                  <view class="card_des">{{creatTime}}</view>
+        </view>
+        <view class="border"></view>
+        <!-- 采用面交方式 -->
+        <view wx:if="{{detail.deliveryid==0}}">
+         <view class="card">
+                  <view class="card_title">交易方式：</view>
+                  <view class="card_des">校内面交</view>
+        </view>
+         <view class="card">
+                  <view class="card_title">联系wx：</view>
+                  <view class="card_des">{{detail.buywx}}</view>
+        </view>
+        </view>
+        <!-- 采用快递方式 -->
+        <view wx:if="{{detail.deliveryid==1}}">
+         <view class="card">
+                  <view class="card_title">交易方式：</view>
+                  <view class="card_des">快递</view>
+        </view>
+         <view class="card">
+                  <view class="card_title">收货信息：</view>
+                  <view class="card_des">姓名：{{detail.buylog.buyName}}<text>\n</text>手机号：{{detail.buylog.buyPhone}}<text>\n</text>地址：{{detail.buylog.buyPlace}}<text>\n</text>备注：{{detail.buylog.buyOther}}</view>
+        </view>
+        </view>
+       <view class="bot_see" bindtap="godetail">订单列表</view>
+       <view class="bot_back" bindtap="home">返回首页</view>
+</view>

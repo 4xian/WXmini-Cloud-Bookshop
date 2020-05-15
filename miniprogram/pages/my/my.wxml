@@ -1,0 +1,114 @@
+<!--miniprogram/pages/my/my.wxml-->
+<!-- <view class="myPage" bindtap="closeShare" wx:if="{{showShare}}"> </view> -->
+<view class="top_box">
+	<view class="top_2">
+		<view class="avator">
+			<open-data wx:if="{{userInfo}}" type="userAvatarUrl"></open-data>
+			<image wx:if="{{!userInfo}}" src="/images/avator.png" bindtap="go" data-go="/pages/login/login"></image>
+		</view>
+	</view>
+	<view class="top_1">
+		<view wx:if="{{!userInfo}}" class="top_1_1" bindtap="go" data-go="/pages/login/login">点击登录</view>
+		
+		<view class="top_1_2" wx:if="{{!userInfo}}" bindtap="go" data-go="/pages/login/login">请先注册登录</view>
+		<view class="top_1_2" wx:if="{{userInfo}}"  >欢迎来自【{{userInfo.campus.name}}】的</view>
+		<view wx:if="{{userInfo}}" class="top_1_1">
+			<open-data type="userNickName"></open-data>
+		</view>
+	</view>
+	
+</view>
+
+<view class="center_box">
+	<view class="center_1" bindtap="go" data-go="/pages/myPublish/myPublish/myPublish" data-status="1">
+		<image src="/images/publish1.png"></image>
+		<view>我的发布</view>
+	</view>
+	<view class="center_1" bindtap="go" data-go="/pages/order/myOrder/myOrder" data-status="1">
+		<image src="/images/order1.png"></image>
+		<view>我的订单</view>
+	</view>
+	<view class="center_1" bindtap="go" data-go="/pages/parse/parse">
+		<image src="/images/parse1.png"></image>
+		<view>我的钱包</view>
+	</view>
+	
+</view>
+
+<view class="blank"></view>
+<view class="center_box">
+<view class="center_1" bindtap="outLogin">
+		<image src="/images/out.png"></image>
+		<view>退出登录</view>
+	</view>
+	<view class="center_1" bindtap="adminLogin">
+		<image src="/images/adminLogin.png"></image>
+		<view>管理员登录</view>
+	</view>
+	<view class="center_1" >
+		<image src="/images/other.png"></image>
+		<view>其他</view>
+	</view>
+</view>
+<!-- <view class="bottom_box">
+	<view class="bottom_card" bindtap="go" data-go="/pages/parse/parse" data-status="1">
+		<view class="bottom_1">
+			<image src="/images/parse.png"></image>
+			<view>我的钱包</view>
+		</view>
+		<image src="/images/go.png"></image>
+	</view>
+	<view class="bottom_card" bindtap="go" data-go="/pages/admin/admin" data-status="1">
+		<view class="bottom_1">
+			<image src="/images/kefu.png"></image>
+			<view>联系客服</view>
+		</view>
+		<image src="/images/go.png"></image>
+	</view>
+	<view class="bottom_card" bindtap="outLogin">
+		<view class="bottom_1">
+			<image src="/images/feedback.png"></image>
+			<view>退出登录</view>
+		</view>
+		<image src="/images/go.png"></image>
+		 <button open-type="feedback"></button> 
+	</view>
+	 <view class="bottom_card" bindtap="showShare"> 
+	<view class="bottom_card" bindtap="adminLogin">
+		<view class="bottom_1">
+			<image src="/images/fen.png"></image>
+			<view>管理员登录</view>
+		</view>
+		<image src="/images/go.png"></image>
+	</view>
+
+	<view class="bottom_card" bindtap="go" data-go="/pages/about/about">
+		<view class="bottom_1">
+			<image src="/images/guanyu.png"></image>
+			<view>关于程序</view>
+		</view>
+		<image src="/images/go.png"></image>
+	</view>
+</view> -->
+
+<!--分享弹出层-->
+<!-- <view wx:if="{{showShare}}"> -->
+
+<!-- <view class="share_contain">
+		<view class="share_border"></view>
+		<view class="share_title">分享到</view>
+		<view class="share_box">
+			<view class="share_one">
+				<image src="/images/weixin.png"></image>
+				<view>微信好友</view>
+				<button class="share_button" open-type="share"></button>
+			</view>
+			<view class="share_bor"></view>
+			<view class="share_one">
+				<image src="/images/pyq.png"></image>
+				<view>朋友圈</view>
+				<button class="share_button" bindtap="preview" data-link="{{poster}}"></button>
+			</view>
+		</view>
+	</view>
+</view> -->

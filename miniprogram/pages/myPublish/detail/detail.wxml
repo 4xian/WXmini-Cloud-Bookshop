@@ -1,0 +1,133 @@
+<view class="myPage" bindtap="closeDelivery" wx:if="{{showDelivery}}"> </view>
+<view class="myPage" bindtap="closeCheckDelivery" wx:if="{{checkDelivery}}"> </view>
+<view class="contain">
+	<view class="card">
+		<!-- <image class="top_over" src="/images/over.png"></image>
+		<image class="bot_over" src="/images/over.png"></image> -->
+		<view class="goods_box">
+			<image class="goods_img" src="{{detail.bookinfo.pic}}"></image>
+			<view class="goods_content">
+				<view class="goods_title text-cut">{{detail.bookinfo.title}}(第{{detail.bookinfo.edition}})</view>
+				<view class="goods_author text-cut">{{detail.bookinfo.author}}</view>
+			</view>
+			<view class="goods_price">￥{{detail.price}}元</view>
+		</view>
+		<view class="border"></view>
+		<view class="list" wx:if="{{detail.deliveryid==0}}">
+			<view><text class="deliveryWay">采用【校内面交】 </text>
+				<view class="fare_title">请尽快联系买家wx 商讨面交地址：</view>
+				<view class="fare_des">{{detail.buywx}}</view>
+			</view>
+		</view>
+		<view class="list" wx:if="{{detail.deliveryid==1}}">
+			<view><text class="deliveryWay">采用【快递】方式 </text>
+				<view class="fare_title">以下为买家预留信息：</view>
+				<view class="fare_title">姓名：</view>
+				<view class="fare_des">{{detail.buylog.buyName}}</view>
+
+				<view class="fare_title">手机：</view>
+				<view class="fare_des">{{detail.buylog.buyPhone}}</view>
+
+				<view class="fare_title">地址：</view>
+				<view class="fare_des">{{detail.buylog.buyPlace}}</view>
+
+				<view class="fare_title">备注：</view>
+				<view class="fare_des">{{detail.buylog.buyOther}}</view>
+			</view>
+			<!-- <view class="list_1">{{detail.deliveryid==0?'校内面交':'快递'}}</view>
+                  <view class="list_2">{{detail.deliveryid==0?detail.ztplace:detail.psplace}}</view> -->
+		</view>
+		<view class="border"></view>
+		<view class="list">
+			<view class="list_1">{{detail.status==1?'等待收货中':(detail.status==2?'交易完成':'订单已取消')}}</view>
+			<view class="list_2">{{detail.status==1?'卖家请尽快发货':(detail.status==2?'要不再来一单':'祝您生活愉快')}}</view>
+		</view>
+		<view class="border"></view>
+		<view class="orderfare">订单信息</view>
+		<view class="fare_box">
+			<view class="fare_title">下单时间</view>
+			<view class="fare_des">{{creatTime}}</view>
+		</view>
+		<view class="fare_box">
+			<view class="fare_title">支付金额</view>
+			<view class="fare_des">￥{{detail.price}}元</view>
+		</view>
+		<view class="border"></view>
+		<view class="orderfare">买家备用信息</view>
+		<view class="fare_box" bindtap="phone" data-phone="{{userinfo.phone}}">
+			<view class="fare_title">电话</view>
+			<view class="fare_des">{{userinfo.phone}}</view>
+		</view>
+		<view class="fare_box" wx:if="{{userinfo.wxnum!==''}}" bindtap="copy" data-copy="{{userinfo.wxnum}}" data-name="微信">
+			<view class="fare_title">微信</view>
+			<view class="fare_des">{{userinfo.wxnum}}</view>
+		</view>
+		<view class="fare_box" wx:if="{{userinfo.qqnum!==''}}" bindtap="copy" data-copy="{{userinfo.qqnum}}" data-name="QQ">
+			<view class="fare_title">QQ</view>
+			<view class="fare_des">{{userinfo.qqnum}}</view>
+		</view>
+		<view class="fare_box" bindtap="copy" data-copy="{{userinfo.email}}" data-name="邮箱">
+			<view class="fare_title">邮箱</view>
+			<view class="fare_des">{{userinfo.email}}</view>
+		</view>
+		<view class="border"></view>
+		<block wx:if="{{detail.chooseId==0}}">
+			<view class="bot_box" wx:if="{{detail.status==1}}">
+				<view class="cancel" bindtap="cancel">取消交易</view>
+				<view wx:if="{{detail.deliveryid==1}}">
+					<view class="delivery" bindtap="inDelivery">填写物流</view>
+					<view class="delivery" bindtap="checkDelivery">查看物流</view>
+				</view>
+				<view class="contact" bindtap="tip">提醒收货</view>
+			</view>
+		</block>
+		<block wx:if="{{detail.chooseId==1}}">
+			<text class="deliveryWay" wx:if="{{detail.status==1}}">该书正在租借中... </text>
+			<view class="bot_box">
+				<view class="contact" bindtap="confimBack" wx:if="{{detail.status==4}}">确认已还书</view>
+			</view>
+		</block>
+
+		<view class="bot_box" wx:if="{{detail.status==2||detail.status==3}}">
+			<view class="delete" bindtap="delete">删除订单</view>
+		</view>
+
+	</view>
+</view>
+<!-- 输入物流单号 -->
+<view wx:if="{{showDelivery}}" class="showDelivery">
+	<view class="b_place">
+		<view class="b_placebox">
+			<input placeholder="请输入物流单号" bindinput="delivery"></input>
+		</view>
+	</view>
+	<view class="delivery" bindtap="deliverySubmit">提交</view>
+</view>
+
+<!-- 查看物流 -->
+<view wx:if="{{checkDelivery}}" class="showDelivery">
+	<view wx:if="{{ems != ''}}">
+		<view class="ems">
+			<image src="{{deliveryData.img}}"></image>
+			<view class="ems-status">
+				<text style="color:blue;font-size:40rpx">{{deliveryData.status}}\n</text>
+				<text style="color:gary;font-size:34rpx">{{deliveryData.arriveTime}}\n</text>
+				<text>{{deliveryData.company}}:{{deliveryData.nu}}</text>
+			</view>
+		</view>
+
+		<scroll-view scroll-y>
+			<view class="deliveryMessages">
+				<block wx:for="{{deliveryMessages}}" wx:key="_id">
+					<text>\n{{item.time}}\n</text>
+					<text>{{item.context}}</text>
+				</block>
+			</view>
+		</scroll-view>
+	</view>
+
+	<view wx:if="{{ems == ''}}">
+		<view>卖家还未更新物流单号！</view>
+	</view>
+
+</view>
