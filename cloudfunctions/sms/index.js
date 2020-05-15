@@ -2,13 +2,13 @@
 var cloud = require('wx-server-sdk')
 var QcloudSms = require("qcloudsms_js")
 // 替换成您申请的云短信 AppID 以及 AppKey
-var sdkappid = '1400356300'
-var appkey = "a78cb3961f4696472a3953c4d5953961"
-var buyId = 586827 // 申请模板 ID 下单时提醒卖家
-var deliveryId = 589036 //  发货时提醒买家
-var remindId =589292//提醒买家收货
-var cancelId = 589298//取消交易提醒
-var finishId = 589038 //  已经收货后提醒卖家
+var sdkappid = '14xxxxxxxx'
+var appkey = "xxxxxxxxxxxxxxxxxxxxx"
+var buyId = 58xxxx // 申请模板 ID 下单时提醒卖家
+var deliveryId = 58xxxx //  发货时提醒买家
+var remindId =58xxxx//提醒买家收货
+var cancelId = 58xxxx//取消交易提醒
+var finishId = 58xxxx //  已经收货后提醒卖家
 var smsSign = "安农大闲置书店" // 替换成您所申请的签名
 
 /*
