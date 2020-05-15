@@ -1,4 +1,4 @@
-const envid = 'shixian-jx2100'; //云开发环境id
+const envid = 'shixian'; //云开发环境id
 
 /*
 下
