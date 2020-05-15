@@ -1,8 +1,8 @@
 var config = {
-  appid: 'wx2cc7e47c681d1101', //服务商公众号Appid
-  envName: 'shixian-jx2100', // 小程序云开发环境ID
-  mchid: '1587479591', //商户号
-  partnerKey: 'jianzhimin1735400430018755294439', //此处填服务商密钥
+  appid: 'wx2xxxxxxxxxx', //服务商公众号Appid
+  envName: 'shixian', // 小程序云开发环境ID
+  mchid: '158xxxxxxx', //商户号
+  partnerKey: 'xxxxxxxxxxxxxxxxxxxx', //此处填服务商密钥32位
   notify_url: 'https://mp.weixin.qq.com', //这个不要管
   spbill_create_ip: '127.0.0.1' //这个不要管
 };
