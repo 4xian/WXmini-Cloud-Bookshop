@@ -1,6 +1,6 @@
 
 //此处填写在极速书籍那边申请的接口密钥
-var appkey = '5a2109492df28f71';
+var appkey = 'xxxxxxxxxxxx';
 
 // 云函数入口文件
 var cloud = require('wx-server-sdk');
