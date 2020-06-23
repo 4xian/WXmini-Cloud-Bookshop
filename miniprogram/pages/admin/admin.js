@@ -303,7 +303,7 @@ Page({
     //管理员登录
     adminLogin() {
         var that = this;
-        if (that.data.adminName == 'admin' && that.data.adminPass == 123456) {
+        if (that.data.adminName == '' && that.data.adminPass == '') {
             console.log('管理员登录成功');
             that.setData({
                 admin: false,
