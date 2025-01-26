@@ -7,7 +7,7 @@ var data = {
   share_poster:'',//必须为网络地址
   //客服联系方式
   kefu: {
-        weixin: 'JX54004300',
+        weixin: '',
         qq: '',
         gzh: '', //公众号二维码必须为网络地址
         phone: '' 

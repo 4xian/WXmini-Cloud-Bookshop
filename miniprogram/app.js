@@ -13,7 +13,7 @@ App({
   //   "id":0,
   //   "name":"安徽农业大学"
   //   },
-  //   "email":"1145024061@qq.com",
+  //   "email":"1xx@qq.com",
   //   "info":{
   //   "avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/KoXA6326rLy7FeykVC2wKISCo1iaJoSIFjlFJYqkdpibH0CZAmHqMHv6O5WR8M6V8qJOjrlWGTl7t6ah0EiaYY7gA/132",
   //   "city":"",
@@ -24,9 +24,9 @@ App({
   //   "province":"Lyon"
   //   },
   //   "parse":0,
-  //   "phone":"17354004300",
+  //   "phone":"",
   //   "qqnum":"",
-  //   "stamp":1587004526659,
+  //   "stamp":,
   //   "useful":true,
   //   "wxnum":""
   //   },
