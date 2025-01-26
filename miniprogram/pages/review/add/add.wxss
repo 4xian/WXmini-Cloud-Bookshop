@@ -1,0 +1,93 @@
+/* miniprogram/pages/review/add/add.wxss */
+.digest-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .digest-cnt {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 300rpx;
+    background-color: #f4f5f7;
+    /* background-color: #bbb; */
+    padding: 0 30rpx;
+    margin-bottom: 20rpx;
+  }
+  
+  .digest-title {
+    padding:20rpx 30rpx;
+    font-size: 40rpx;
+    background-color: #f4f5f7;
+    /* background-color: #bbb; */
+  }
+  
+  .digest-info {
+    color: #494949;
+    font-size: 28rpx;
+  }
+  .digest-info-grades{
+    font-size: 20rpx;
+    color: gray;
+  }
+  .digest-info-detail {
+
+    padding-right: 10rpx;
+    word-break: break-all;
+    font-size: 24rpx;
+    color: gray;
+    height: 430rpx;
+    overflow: hidden;
+  }
+  
+  .digest-cover {
+    flex: 0 0 200rpx;
+  }
+  
+  .digest-cover image {
+    width: 300rpx;
+    height: 100%;
+    border-radius: 10px;
+    
+  }
+  
+  .digest-comment {
+    color: #494949;
+    font-size: 34rpx;  
+    line-height: 1.5;
+    word-break: break-all;
+    flex: 1;
+    box-sizing: border-box;
+    padding: 50rpx;
+    width: 100%;
+    margin-top: 120px;
+    border:1px solid #494949;
+  }
+  
+  .digest {
+    flex: 0 0 204rpx;
+  }
+  
+  .digest-cnt {
+    margin: 0;
+  }
+  
+  
+  
+  .digest-save  {
+    width: 400rpx;
+    height: 80rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #6699CC;
+    color: #fff;
+    border-radius: 40rpx;
+    letter-spacing: 4rpx;
+    font-size: 32rpx;
+    border: none;
+    font-weight: 500;
+}
+  

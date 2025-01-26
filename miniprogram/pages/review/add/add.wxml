@@ -1,0 +1,21 @@
+<!--miniprogram/pages/review/add/add.wxml-->
+
+<view class="digest-wrapper">
+	<view class="digest">
+		<view class="digest-title">{{bookinfo.title}}</view>
+		<view class="digest-cnt">
+			<view class="digest-info">
+				<!-- <view class="digest-info-grades"></view> -->
+				<view class="digest-info-detail">
+					{{bookinfo.author}} / ￥{{bookinfo.price}}元
+					<view style="margin-top:10px ">{{bookinfo.summary}}</view>
+				</view>
+			</view>
+			<view class="digest-cover">
+				<image src="{{bookinfo.pic}}" mode="widthFix"></image>
+			</view>
+		</view>
+	</view>
+	<textarea class="digest-comment" bindinput="addInput" placeholder="说说你读这本书的感受吧!(100字内)" maxlength="100" cursor-spacing="50px" />
+	<button class="digest-save" bindtap="onReview">发表书评</button>
+</view>

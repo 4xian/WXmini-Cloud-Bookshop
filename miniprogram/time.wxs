@@ -1,0 +1,27 @@
+//下面的就别动了
+function formTime(creatTime) {
+  var date = getDate(creatTime),
+        Y = date.getFullYear(),
+        M = date.getMonth() + 1,
+        D = date.getDate(),
+        H = date.getHours(),
+        m = date.getMinutes()
+  if (M < 10) {
+        M = '0' + M;
+  }
+  if (D < 10) {
+        D = '0' + D;
+  }
+  if (H < 10) {
+        H = '0' + H;
+  }
+  if (m < 10) {
+        m = '0' + m;
+  }
+  
+  return Y + '/' + M + '/' + D + ' ' + H + ':' + m ;
+}
+
+module.exports = {
+  formTime: formTime,
+}

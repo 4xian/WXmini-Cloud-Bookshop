@@ -1,0 +1,330 @@
+/* miniprogram/pages/admin/admin.wxss */
+
+.b_place {
+    width: 100%;
+    padding: 10rpx;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;margin-top: 30px;
+  }
+.b_placebox {
+    width: 50%;
+    height: 80rpx;
+    padding: 0 20rpx;
+    border-radius: 10rpx;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    background: rgb(238, 238, 238);
+  }
+  
+  .b_placebox input {
+    width: 50%;
+    font-size: 24rpx;
+  
+    color: #8c9aa8;
+  }
+
+  .buy {
+    width: 80px;
+    height: 70rpx;
+    background: #6699CC;
+    color: #000;
+    letter-spacing: 4rpx;
+    font-size: 28rpx;
+    border-radius: 35rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+/* 第二部分 */
+.userSum{
+    margin-top: 50px;
+    color: grey;
+    font-size: 30rpx;
+    text-align: center;
+}
+
+  .tab_contain {
+    width: 100%;
+    height: 90rpx;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 1rpx solid #eee;
+    position: fixed;
+    background-color: white;
+  }
+  .reviewTab_contain{
+    width: 100%;
+    height: 90rpx;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 1rpx solid #eee;
+    position: fixed;
+    top:90rpx;
+    background-color: white;
+  }
+  .reviewtab_one{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  
+  .tab_one {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  
+  .tab_one view {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+    letter-spacing: 2rpx;
+  }
+  
+  .tab_on {
+    font-size: 32rpx;
+    font-weight: 600;
+    border-bottom: 4rpx solid #6699CC;
+  }
+
+  .contain {
+    width: 100%;
+    padding: 24rpx;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin-top: 40px;
+  }
+  .userContain{
+    width: 100%;
+    padding: 24rpx;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+  }
+  .reviewContain{
+    width: 100%;
+    padding: 24rpx;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin-top: 80px;
+  }
+  
+  .card {
+    width: 100%;
+
+    display: flex;
+    box-sizing: border-box;
+    border-radius: 15rpx;
+    margin-bottom: 30rpx;
+    flex-direction: column;
+  }
+  
+  .top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20rpx;
+    border-bottom: 1rpx solid #eee;
+  }
+  .text-red{
+    color: #f80202;
+  }
+  .top1 {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .date {
+    font-size: 28rpx;
+    color: #b2b2b2;
+    letter-spacing: 2rpx;
+  }
+  
+  .title {
+    display: flex;
+    align-items: center;
+  }
+  
+  .title image {
+    width: 36rpx;
+    height: 36rpx;
+  }
+  
+  .title view {
+    padding-left: 10rpx;
+    letter-spacing: 3rpx;
+    font-size: 30rpx;
+    font-weight: 600;
+  }
+  
+  .del {
+    display: flex;
+    align-items: center;
+    border: 1rpx solid #c2c2c2;
+    border-radius: 20rpx;
+    padding: 0 10rpx;
+    box-sizing: border-box;
+    height: 40rpx;
+  }
+  
+  .del image {
+    width: 28rpx;
+    height: 28rpx;
+  }
+  
+  .del view {
+    font-size: 26rpx;
+    color: #c2c2c2;
+    letter-spacing: 3rpx;
+  }
+  
+  .center {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20rpx 0;
+    border-bottom: 1rpx solid #eee;
+  }
+
+  
+  .center image {
+    width: 150rpx;
+    height: 150rpx;
+  }
+  .reviewCenter image {
+    width: 180rpx;
+    height: 180rpx;
+  }
+  .reviewCenter{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20rpx 0;
+    border-bottom: 1rpx solid #eee;
+    overflow:hidden;
+  }
+  
+  .content {
+    width: calc(100% - 130rpx);
+    padding: 0 20rpx;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: space-between;
+  }
+  
+  .book {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .book_name {
+    font-size: 30rpx;
+    letter-spacing: 2rpx;
+  }
+  
+  .book_author {
+    padding-top: 10rpx;
+    font-size: 26rpx;
+    letter-spacing: 3rpx;
+    color: #c2c2c2;
+    overflow:hidden;
+  }
+  
+  .price {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 32rpx;
+    color: #f80202;
+  }
+  
+  .bottom {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20rpx 0 0 0;
+    border-bottom: 1px solid gray;
+  }
+  
+  .cancel {
+    width: 110rpx;
+    font-size: 26rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20rpx;
+    height: 50rpx;
+    border-radius: 25rpx;
+    color: black;
+    border: 2rpx solid #c2c2c2;
+    margin-left: 20rpx;
+  }
+
+  /* 图表 */
+  .echart{
+    margin-top: 80px;
+  }
+
+  .mychart-dom-multi-sex {
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    top: 10%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .mychart-dom-multi-order {
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    top: 45%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+.mychart-dom-multi-publish{
+  position: absolute;
+    width: 100%;
+    height: 50%;
+    top: 90%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+  .goTop{
+    height: 80rpx;
+    width: 80rpx;
+    position: fixed;
+    bottom: 50rpx;
+    right: 30rpx;
+    border-radius: 50%;
+  }

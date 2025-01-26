@@ -1,0 +1,228 @@
+<!--miniprogram/pages/admin/admin.wxml-->
+<!-- 管理员登录界面 -->
+<view wx:if="{{admin}}">
+	<image style="width:100%" src="../../images/background.jpg"></image>
+	<view class="b_place">
+		<view class="b_placebox">
+			<input placeholder="管理员账号" bindinput="adminName"></input>
+		</view>
+		<view class="b_placebox">
+			<input type="password" placeholder="管理员密码" bindinput="adminPass"></input>
+		</view>
+		<view class="showBuy-button">
+			<view class="buy shadow" bindtap="adminLogin">管理员登录</view>
+		</view>
+	</view>
+</view>
+
+<!-- 管理员界面 -->
+<view wx:if="{{adminMenu}}">
+	<view class="tab_contain">
+		<block wx:for="{{tab}}" wx:key="id">
+			<view class="tab_one" bindtap="changeTab" data-id="{{index}}">
+				<view class="{{tabid==item.id?'tab_on':''}}">{{item.name}}</view>
+			</view>
+		</block>
+	</view>
+
+	<!-- 用户管理 -->
+	<view wx:if="{{userMenu}}">
+		<view class="userSum">用户总人数：{{userList.length}}</view>
+		<view class="userContain" wx:if="{{userList.length!==0}}">
+			<block wx:for="{{userList}}" wx:for-index='index' wx:for-item='item'>
+				<view class="card shadow">
+					<!-- <view class="top">
+					<view class="top1">
+						<view class="date">{{otherjs.formTime(item.creatTime)}}</view>
+					</view>
+				</view> -->
+					<view class="center">
+						<image src="{{item.info.avatarUrl}}"></image>
+						<view class="content">
+							<view class="book">
+								<view class="book_name text-cut">{{item.info.nickName}}</view>
+								<view class="book_author text-cut">{{item.campus.name}}</view>
+							</view>
+							<view class="price">余额：{{item.parse}}元</view>
+						</view>
+					</view>
+					<view class="bottom">
+						<!-- <view wx:if="{{item.status==1}}" class="cancel" catchtap="cancel" data-ord="{{item}}">取消订单</view>
+					<view wx:if="{{item.status==1}}" class="confirm" catchtap="confirm" data-ord="{{item}}">确认收货</view> -->
+						<view class="cancel" bindtap="deleteUser" data-id="{{item._id}}">删除用户</view>
+					</view>
+				</view>
+			</block>
+		</view>
+	</view>
+
+	<!-- 书圈管理 -->
+	<view wx:if="{{reviewMenu}}">
+		<view class="reviewTab_contain">
+			<block wx:for="{{reviewTab}}" wx:key="id">
+				<view class="reviewtab_one" bindtap="changeReviewTab" data-id="{{index}}">
+					<view class="{{reviewtabid==item.id?'tab_on':''}}">{{item.name}}</view>
+				</view>
+			</block>
+		</view>
+
+		<block wx:if="{{reviewBookMenu}}">
+			<!-- <view class="userSum">书评总数：{{reviewList.length}}</view> -->
+			<view class="reviewContain" wx:if="{{reviewList.length!==0}}">
+				<block wx:for="{{reviewList}}" wx:for-index='index' wx:for-item='item'>
+					<view class="card shadow">
+						<!-- <view class="top">
+					<view class="top1">
+						<view class="date">{{otherjs.formTime(item.creatTime)}}</view>
+					</view>
+				</view> -->
+						<view class="reviewCenter">
+							<image src="{{item.bookinfo.pic}}"></image>
+							<view class="content">
+								<view class="book">
+									<view class="book_name text-cut">{{item.bookinfo.title}}</view>
+									<view class="book_author text-cut">书评： <text>\n</text>{{item.review}}</view>
+								</view>
+								<!-- <view class="price">余额：{{item.parse}}元</view> -->
+							</view>
+						</view>
+						<view class="bottom">
+							<!-- <view wx:if="{{item.status==1}}" class="cancel" catchtap="cancel" data-ord="{{item}}">取消订单</view>
+					<view wx:if="{{item.status==1}}" class="confirm" catchtap="confirm" data-ord="{{item}}">确认收货</view> -->
+							<view class="cancel" bindtap="deleteReview" data-id="{{item._id}}">删除评论</view>
+						</view>
+					</view>
+				</block>
+			</view>
+		</block>
+		<block wx:if="{{reqBookMenu}}">
+			<!-- <view class="userSum">书评总数：{{reviewList.length}}</view> -->
+			<view class="reviewContain" wx:if="{{reqBookList.length!==0}}">
+				<block wx:for="{{reqBookList}}" wx:for-index='index' wx:for-item='item'>
+					<view class="card shadow">
+						<!-- <view class="top">
+					<view class="top1">
+						<view class="date">{{otherjs.formTime(item.creatTime)}}</view>
+					</view>
+				</view> -->
+						<view class="center">
+							<image src="{{item.userInfo.info.avatarUrl}}"></image>
+							<view class="content">
+								<view class="book">
+									<view class="book_name text-cut">{{item.userInfo.info.nickName}}</view>
+									<view class="book_author text-cut">求购内容： <text>\n</text>{{item.reqText}} <text>\n</text>微信：{{item.reqwx}}</view>
+								</view>
+								<!-- <view class="price">余额：{{item.parse}}元</view> -->
+							</view>
+						</view>
+						<view class="bottom">
+							<!-- <view wx:if="{{item.status==1}}" class="cancel" catchtap="cancel" data-ord="{{item}}">取消订单</view>
+					<view wx:if="{{item.status==1}}" class="confirm" catchtap="confirm" data-ord="{{item}}">确认收货</view> -->
+							<view class="cancel" bindtap="deleteReq" data-id="{{item._id}}">删除求购</view>
+						</view>
+					</view>
+				</block>
+			</view>
+		</block>
+	</view>
+
+	<!-- 在售书籍管理 -->
+	<view wx:if="{{bookMenu}}">
+		<!-- <view class="userSum">在售书籍总数：{{bookList.length}}</view> -->
+		<view class="contain" wx:if="{{bookList.length!==0}}">
+			<block wx:if="{{item.status==0}}" wx:for="{{bookList}}" wx:key="_id">
+				<view class="card shadow" data-id="{{item._id}}">
+					<view class="top">
+						<view class="top1">
+							<view class="title {{item.status==1?'text-red':''}}">
+								<image src="/images/order.png"></image>
+								<view>{{item.status==0?'在售中':(item.status==1?'交易中':(item.status==2?'已完成':'已取消'))}}</view>
+							</view>
+							<!-- <view class="date">{{otherjs.formTime(item.creatTime)}}</view> -->
+						</view>
+					</view>
+					<view class="center">
+						<image src="{{item.bookinfo.pic}}"></image>
+						<view class="content">
+							<view class="book">
+								<view class="book_name text-cut">{{item.bookinfo.title}}</view>
+								<view class="book_author text-cut">{{item.bookinfo.author}}</view>
+							</view>
+							<block wx:if="{{item.chooseId ==0}}">
+							<view class="price">￥{{item.sellPrice}}元</view>
+							</block>
+							<block wx:if="{{item.chooseId ==1}}">
+							<view class="price">￥{{item.rentPrice}}元/天</view>
+							</block>
+						</view>
+					</view>
+					<view class="bottom">
+
+						<view class="cancel" catchtap="deleteBook" data-id="{{item._id}}">删除书籍</view>
+					</view>
+				</view>
+			</block>
+			<block wx:if="{{bookList.length>20}}">
+				<import src="/common.wxml" />
+				<template is="loadmore" data="{{nomore}}" />
+			</block>
+		</view>
+	</view>
+	<!-- 订单管理 -->
+	<view wx:if="{{orderMenu}}">
+		<view class="userSum">订单总数：{{orderList.length}}</view>
+		<view class="userContain" wx:if="{{bookList.length!==0}}">
+			<block wx:for="{{orderList}}" wx:key="_id">
+				<view class="card shadow" data-id="{{item._id}}">
+					<view class="top">
+						<view class="top1">
+							<view class="title {{item.status==1?'text-red':''}}">
+								<image src="/images/order.png"></image>
+								<view>{{item.status==0?'在售中':(item.status==1?'交易中':(item.status==2?'已完成':'已取消'))}}</view>
+							</view>
+							<!-- <view class="date">{{otherjs.formTime(item.creatTime)}}</view> -->
+						</view>
+					</view>
+					<view class="center">
+						<image src="{{item.bookinfo.pic}}"></image>
+						<view class="content">
+							<view class="book">
+								<view class="book_name text-cut">{{item.bookinfo.title}}</view>
+								<view class="book_author text-cut">{{item.bookinfo.author}}</view>
+							</view>
+							<block wx:if="{{item.chooseId ==0}}">
+							<view class="price">￥{{item.sellPrice}}元</view>
+							</block>
+							<block wx:if="{{item.chooseId ==1}}">
+							<view class="price">￥{{item.rentPrice}}元/天</view>
+							</block>
+						</view>
+					</view>
+					<view class="bottom">
+
+						<view class="cancel" catchtap="deleteOrder" data-id="{{item._id}}">删除订单</view>
+					</view>
+				</view>
+			</block>
+			<block wx:if="{{orderList.length>20}}">
+				<import src="/common.wxml" />
+				<template is="loadmore" data="{{nomore}}" />
+			</block>
+
+		</view>
+	</view>
+
+	<!-- 图表统计 -->
+	<view wx:if="{{echartMenu}}">
+		<view class="echart">
+			<ec-canvas class="mychart-dom-multi-sex" canvas-id="mychart-multi-bar" ec="{{ ecSex }}"></ec-canvas>
+			<ec-canvas class="mychart-dom-multi-order" canvas-id="mychart-multi-order" ec="{{ ecOrder }}"></ec-canvas>
+			<ec-canvas class="mychart-dom-multi-publish" canvas-id="mychart-multi-publish" ec="{{ ecPublish }}"></ec-canvas>
+		</view>
+	</view>
+
+
+</view>
+
+<!-- 回到顶部 -->
+<image src="../../images/goTop.png" class="goTop" bindtap="goTop"></image>

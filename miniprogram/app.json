@@ -1,0 +1,64 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/cart/cart",
+        "pages/rent/rent",
+        "pages/admin/admin",
+        "pages/detail/detail",
+        "pages/review/review",
+        "pages/review/add/add",
+        "pages/my/my",
+        "pages/publish/publish",
+        "pages/login/login",
+        "pages/search/search",
+        "pages/myPublish/myPublish/myPublish",
+        "pages/myPublish/detail/detail",
+        "pages/order/myOrder/myOrder",
+        "pages/order/detail/detail",
+        "pages/success/success",
+        "pages/parse/parse",
+        "pages/refill/refill",
+        "pages/mycash/mycash"
+        
+    ],
+    "window": {
+        "backgroundColor": "#F6F6F6",
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#CCCCFF",
+        "navigationBarTitleText": "安徽农业大学 书店",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true
+    },
+    "sitemapLocation": "sitemap.json",
+    "style": "v2",
+    "tabBar": {
+        "color": "#707070",
+        "selectedColor": "#000000",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "/images/tabbar/home.png",
+                "selectedIconPath": "/images/tabbar/home_on.png"
+            },
+            {
+                "pagePath": "pages/publish/publish",
+                "text": "发布",
+                "iconPath": "/images/tabbar/publish.png",
+                "selectedIconPath": "/images/tabbar/publish_on.png"
+            },
+            {
+                "pagePath": "pages/cart/cart",
+                "text": "购物车",
+                "iconPath": "/images/tabbar/cart.png",
+                "selectedIconPath": "/images/tabbar/cart_on.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "我的",
+                "iconPath": "/images/tabbar/my.png",
+                "selectedIconPath": "/images/tabbar/my_on.png"
+            }
+        ]
+    }
+}

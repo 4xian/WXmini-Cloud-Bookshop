@@ -1,0 +1,108 @@
+<!--miniprogram/pages/review/review.wxml-->
+<wxs src="../../time.wxs" module="otherjs" />
+<view class="tab_contain">
+	<block wx:for="{{tab}}" wx:key="id">
+		<view class="tab_one" bindtap="changeTab" data-id="{{index}}">
+			<view class="{{tabid==item.id?'tab_on':''}}">{{item.name}}</view>
+		</view>
+	</block>
+</view>
+
+
+<view wx:if="{{tabid==0}}">
+	<!-- <view> -->
+	<view class="addReview">
+		<button bindtap="addReview">扫码添加书评</button>
+	</view>
+
+
+<!-- 书评列表 -->
+<scroll-view scroll-y class="wrapper">
+	<view wx:for="{{list}}" wx:key="_id" data-index="{{index}}" class="digest-wrapper">
+		<!-- <view class="time">
+			
+		</view> -->
+
+		<view class="digest">
+			<view class="digest-title">{{index+1}}. {{item.bookinfo.title}}</view>
+			<view class="digest-cnt">
+				<view class="digest-info">
+					<!-- <view class="digest-info-grades"></view> -->
+					<view class="digest-info-detail">
+						{{item.bookinfo.author}} / ￥{{item.bookinfo.price}}元
+						<view style="margin-top:10px ">{{item.bookinfo.summary}}</view>
+					</view>
+				</view>
+				<view class="digest-cover">
+					<image src="{{item.bookinfo.pic}}" mode="widthFix"></image>
+				</view>
+			</view>
+		</view>
+
+
+
+		<view class="digest-comment">
+			<view class="digest-comment-userInfo">			
+			<image src="{{item.userInfo.info.avatarUrl}}"></image>
+			<!-- <open-data  type="userAvatarUrl"></open-data> -->
+			<!-- <view><open-data type="userNickName"></open-data></view> -->
+			<view>{{item.userInfo.info.nickName}}\n
+			<view class="digest-comment-userInfo-time">发表于：{{otherjs.formTime(item.creatTime)}}</view>
+			</view>
+			</view>
+			<text style="font-size:28rpx ;color:gray">\n评语：\n</text>
+			<view class="digest-review">
+			<image src="../../images/left-quote.png" class="comment-quote comment-quote-left"></image>
+			{{item.review}}
+			<image src="../../images/right-quote.png" class="comment-quote comment-quote-right"></image>
+			</view>
+		</view>
+	</view>
+</scroll-view>
+</view>
+
+<view wx:if="{{tabid==1}}">
+	<!-- <view> -->
+	<view class="req">
+		<textarea placeholder="说出你想要求购的书籍信息！" value="{{reqText}}" bindinput="reqInput"></textarea>
+		<view class="req-wx">
+			<text>联系wx:</text>
+			<input bindinput="reqwx" value="{{reqwx}}" placeholder="留下你的wx,方便卖家联系！" />
+		</view>
+	</view>
+
+	<view class="req-publish">
+		<button bindtap="addPublish">发布求购书籍</button>
+	</view>
+
+	<scroll-view scroll-y class="wrapper">
+		<view wx:for="{{reqlist}}" wx:key="_id" data-index="{{index}}" class="digest-wrapper">
+
+
+			<view class="digest-comment">
+			<view class="digest-comment-userInfo">			
+			<image src="{{item.userInfo.info.avatarUrl}}"></image>
+			<!-- <open-data  type="userAvatarUrl"></open-data> -->
+			<!-- <view><open-data type="userNickName"></open-data></view> -->
+			<view>{{item.userInfo.info.nickName}}\n
+			<view class="digest-comment-userInfo-time">发表于：{{otherjs.formTime(item.creatTime)}}</view>
+			</view>
+			</view>
+			<text style="font-size:28rpx ;color:gray">\n求购信息：\n\n</text>
+			<view class="digest-req">
+			<image src="../../images/left-quote.png" class="comment-quote comment-quote-left"></image>
+			{{item.reqText}}
+			<image src="../../images/right-quote.png" class="comment-quote comment-quote-right"></image>
+			<view><text style="font-size:28rpx ;color:gray;">\n联系wx：\n</text>{{item.reqwx}}</view>
+			</view>
+			
+		</view>
+		</view>
+	</scroll-view>
+
+
+
+
+</view>
+<!-- 回到顶部 -->
+<image src="../../images/goTop.png" class="goTop" bindtap="goTop"></image>

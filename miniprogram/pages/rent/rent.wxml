@@ -1,0 +1,51 @@
+<!--miniprogram/pages/rent/rent.wxml-->
+<wxs src="../../time.wxs" module="otherjs" />
+<view class="rent-tip">
+<text style="color:red">租借须知:</text>
+<text class="tip-text">
+ 1.租借只适用于同校用户交易
+ 2.租借时需先交纳保证金，金额为书籍原价，待归还书籍后去除租借费余下将返还给用户
+</text>
+</view>
+<view class="rent-list">
+<text>租书推荐</text>
+ 
+</view>
+
+
+
+      <block wx:if="{{list.length>0}}">
+            <block wx:for="{{list}}" wx:key="_id">
+                  <view class="list_box" bindtap="detail" data-id="{{item._id}}"> 
+                  <image lazy-load class="list_poster" src="{{item.bookinfo.pic}}"></image>
+                        <view class="list_content">
+                              <view class="list_word">
+                                    <view class="list_title text-cut">{{item.bookinfo.title}}
+                                    </view>
+                                    <view class="list_author text-cut">{{item.bookinfo.author}}
+                                    </view>
+                              </view>
+                              <view class="list_price">￥{{item.rentPrice}}元/天 <text class="rent_price">保证金：￥{{item.bookinfo.price}}元</text></view>
+                              <view class="list_between">
+                                    <view class="list_time" >{{otherjs.formTime(item.creatTime)}}发布</view>  
+                              </view>
+                        </view>
+                         
+                  </view>
+            </block>
+      </block>
+
+ <!--无内容显示-->
+<view class="nocontent" wx:if="{{list.length==0}}">
+      <image lazy-load src="/images/blank.png"></image>
+      <view class="blank_text">还没有书籍出租~</view>
+</view>
+
+<!-- <view class="tabbar">
+<view class="buy_box">
+            <view class="rentBuy shadow" bindtap="rentPublish">发布租借</view>
+</view>
+</view> -->
+
+<!-- 回到顶部 -->
+<image src="../../images/goTop.png" class="goTop" bindtap="goTop"></image>
